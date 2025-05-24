@@ -1,0 +1,12 @@
+# Terraform build files and plugins
+.terraform/
+*.tfstate
+*.tfstate.*
+terraform.tfstate
+terraform.tfstate.backup
+
+# Optional: ignore secrets if you add them here
+terraform.tfvars
+# RKE and Kubeconfig state (do not commit)
+kube_config_cluster.yml
+cluster.rkestate

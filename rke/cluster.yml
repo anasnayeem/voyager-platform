@@ -1,0 +1,15 @@
+nodes:
+  - address: 34.27.123.147
+    user: nayeem_au96
+    role: [controlplane, worker, etcd]
+    ssh_key_path: ~/.ssh/id_rsa
+
+  - address: 34.55.29.176
+    user: nayeem_au96
+    role: [controlplane, worker, etcd]
+    ssh_key_path: ~/.ssh/id_rsa
+
+  - address: 35.226.197.242
+    user: nayeem_au96
+    role: [controlplane, worker, etcd]
+    ssh_key_path: ~/.ssh/id_rsa
