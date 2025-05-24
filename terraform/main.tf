@@ -5,7 +5,8 @@ provider "google" {
 }
 
 resource "google_compute_instance" "rke_node" {
-  name         = "rke-node-1"
+  count        = 3
+  name         = "rke-node-${count.index + 1}"
   machine_type = var.machine_type
   zone         = var.zone
 
@@ -18,9 +19,7 @@ resource "google_compute_instance" "rke_node" {
 
   network_interface {
     network = "default"
-    access_config {
-      // This gives the VM a public IP
-    }
+    access_config {}
   }
 
   metadata = {
