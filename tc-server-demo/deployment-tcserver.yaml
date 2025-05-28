@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tc-server-1
+  namespace: tc-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tc-server-1
+  template:
+    metadata:
+      labels:
+        app: tc-server-1
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: html
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: html
+        configMap:
+          name: tc-server-1-html
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tc-server-1-html
+  namespace: tc-demo
+data:
+  index.html: |
+    <h1>Hello from TC server 1</h1>
